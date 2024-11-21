@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SkinSense Analysis</title>
+    <link href="https://fonts.googleapis.com/css2?family=Coco+Sharp&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css"> <!-- Link to your CSS file -->
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script> <!-- Include TensorFlow.js -->
+</head>
+<body>
+    <h1>SkinSense Analysis</h1>
+    
+    <!-- Video Container for Webcam -->
+    <div id="video-container">
+        <video id="video" width="100%" autoplay playsinline></video>
+    </div>
+
+    <!-- Analyzing Text Messages -->
+    <div id="analyzing-text"></div>
+
+    <!-- Result Text -->
+    <div id="result" style="display:none; font-size: 24px; margin-top: 20px;"></div>
+
+    <!-- Try Again Button -->
+    <button id="try-again-button" style="display: none;">
+        Try Again <span class="countdown">8</span>
+    </button>
+
+    <!-- Recommendations Section -->
+    <div id="recommendations" style="display: none; margin-top: 20px; font-size: 1.2em; text-align: center; color: #432812;"></div>
+
+    <!-- Start Button for Analysis -->
+    <button id="start-button">Let's Find Your Skin Type</button>
+
+    <!-- Link to your JavaScript file (placed just before the closing </body>) -->
+    <script src="script.js"></script>
+
+    <script>
+        // Try Again button functionality
+        document.getElementById('try-again-button').addEventListener('click', () => {
+            // Reset UI to the start
+            document.getElementById('start-button').style.display = 'inline-block';
+            document.getElementById('result').style.display = 'none';
+            document.getElementById('analyzing-text').style.display = 'none';
+            document.getElementById('try-again-button').style.display = 'none';
+            document.getElementById('recommendations').style.display = 'none';
+
+            // Restart the pre-analysis messages
+            startAnalysis(); // Call the startAnalysis function from your JavaScript
+        });
+
+        // Countdown logic
+        let countdownValue = 8;
+        let countdownInterval;
+
+        function startCountdown() {
+            const countdownElement = document.querySelector('#try-again-button .countdown');
+            countdownElement.textContent = countdownValue;  // Update the countdown number
+            countdownValue--;  // Decrement countdown for the next cycle
+
+            if (countdownValue < 0) {
+                clearInterval(countdownInterval);  // Stop the countdown at 0
+                // Replace video with white rectangle after countdown
+                document.getElementById('video').style.display = 'none';
+                const whiteRectangle = document.createElement('div');
+                whiteRectangle.style.backgroundColor = 'white';
+                whiteRectangle.style.height = '250px';
+                whiteRectangle.style.width = '100%';
+                whiteRectangle.style.borderRadius = '8px';
+                whiteRectangle.id = 'white-rectangle'; // Add ID for easy styling or reference
+                document.getElementById('video-container').appendChild(whiteRectangle);
+
+                // Optionally add product images and descriptions once Amazon API integration is done
+                // (This part will be implemented when you have the API data)
+            }
+        }
+
+        function startCountdownTimer() {
+            countdownInterval = setInterval(startCountdown, 1000); // Update every second
+        }
+
+        // Initialize countdown when needed
+        startCountdownTimer();
+    </script>
+</body>
+</html>

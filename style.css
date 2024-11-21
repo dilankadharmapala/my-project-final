@@ -1,0 +1,202 @@
+/* Font-face rule to load custom font */
+@font-face {
+  font-family: 'CocoSharpRegular';
+  src: url('fonts/coco-sharp-regular.ttf') format('truetype'); /* Adjust path as needed */
+}
+
+/* General body styling */
+body {
+  font-family: 'CocoSharpRegular', sans-serif;
+  background-color: #f7eadf;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+/* Title styling */
+h1 {
+  font-size: 2.5em;
+  color: #432812;
+  margin-bottom: 20px;
+  text-align: center;
+  font-weight: bold; /* Make the title bold */
+}
+
+/* Video container and video */
+#video-container {
+  position: relative;
+  display: inline-block;
+  margin-bottom: 20px;
+}
+
+#video {
+  transform: scaleX(-1); /* Invert the webcam */
+  border-radius: 8px;
+  border: 2px solid #432812;
+  width: 100%; /* Make video responsive */
+  max-width: 500px; /* Max width for the video */
+}
+
+/* Analyzing text styling (positive messages, centered, moderate font size) */
+#analyzing-text {
+  font-size: 1.5em; /* Adjusted for better balance */
+  color: #432812;
+  text-align: center;
+  margin-top: 20px;
+  font-family: 'CocoSharpRegular', sans-serif;
+  display: none; /* Hidden initially */
+  font-weight: bold;
+}
+
+/* Result text styling */
+#result {
+  font-size: 1.5em; /* Same size as the messages */
+  color: #432812;
+  text-align: center;
+  margin-top: 20px;
+  font-family: 'CocoSharpRegular', sans-serif;
+  font-weight: 700; /* Stronger bold style */
+  display: none; /* Initially hidden */
+}
+
+/* Button styling */
+#start-button {
+  padding: 12px 25px; /* Original padding for the start button */
+  background-color: #432812;
+  color: #f7eadf;
+  border: none;
+  border-radius: 5px;
+  font-family: 'CocoSharpRegular', sans-serif;
+  font-size: 1.2em; /* Restore original font size */
+  cursor: pointer;
+  margin-bottom: 20px; /* Space between start button and any other elements */
+}
+
+#start-button:hover {
+  background-color: #f7eadf;
+  color: #432812;
+}
+
+/* Try Again button styling */
+#try-again-button {
+  padding: 6px 12px; /* Smaller padding for the try again button */
+  background-color: #432812;
+  color: #f7eadf;
+  border: none;
+  border-radius: 5px;
+  font-family: 'CocoSharpRegular', sans-serif;
+  font-size: 0.9em; /* Smaller font size */
+  cursor: pointer;
+  margin-top: 20px; /* More space above the button */
+  margin-bottom: 20px; /* Space below the button */
+  width: auto; /* Make sure button width adjusts based on content */
+  min-width: 120px; /* Minimum width to fit text comfortably */
+  text-align: left; /* Align the text to the left */
+  display: inline-flex; /* Use inline-flex for button text and countdown */
+  align-items: center; /* Vertically center the text and countdown */
+}
+
+/* Countdown styling inside the try again button */
+#try-again-button .countdown {
+  font-family: sans-serif;  /* Use the default font for countdown numbers */
+  font-size: 1em; /* Ensure the countdown size is not too large */
+  margin-left: 4px; /* Reduced margin between button text and countdown */
+}
+
+#try-again-button .countdown:before {
+  content: "("; /* Opening bracket */
+}
+
+#try-again-button .countdown:after {
+  content: ")"; /* Closing bracket */
+}
+
+/* Recommendations styling (white rectangle for product) */
+#recommendations {
+  font-size: 1.2em;
+  color: #432812;
+  text-align: center;
+  margin-top: 20px;
+  font-family: 'CocoSharpRegular', sans-serif;
+  display: none; /* Initially hidden */
+}
+
+/* Recommendations container */
+#recommendations .product-box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  width: 80%;
+  max-width: 1000px;
+  margin: auto;
+}
+
+/* Product image styling */
+#product-image {
+  width: 40%;
+  height: 100%;
+  background-color: #f0f0f0;
+  border-radius: 8px;
+}
+
+/* Product description styling */
+#product-description {
+  width: 55%;
+  font-size: 1.1em;
+  color: #432812;
+  padding-left: 20px;
+}
+
+/* Result and button container alignment */
+#result-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin-top: 20px;
+}
+
+/* Mobile-specific adjustments (applied only for small screens) */
+@media (max-width: 600px) {
+  body {
+    padding: 10px; /* Add some padding to avoid elements being too close to edges */
+  }
+
+  #start-button {
+    width: 100%; /* Make the start button full width on mobile */
+    padding: 10px; /* Adjust padding for smaller screens */
+    font-size: 1.1em; /* Slightly smaller font size */
+  }
+
+  #try-again-button {
+    width: 100%; /* Full width for the "try again" button */
+    padding: 10px; /* Adjust padding for smaller screens */
+    font-size: 1em; /* Adjust font size for mobile */
+    min-width: 0; /* Remove the minimum width constraint */
+    text-align: center; /* Center-align the text on mobile */
+  }
+
+  #analyzing-text,
+  #result {
+    font-size: 1.3em; /* Adjust text size to fit smaller screens */
+    margin-top: 10px; /* Reduce space above */
+  }
+
+  #video {
+    max-width: 100%; /* Ensure video takes up available screen space */
+    height: auto; /* Maintain aspect ratio */
+  }
+
+  h1 {
+    font-size: 2em; /* Adjust title size for mobile */
+  }
+}
